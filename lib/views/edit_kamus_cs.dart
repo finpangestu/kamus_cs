@@ -68,6 +68,7 @@ class _EditKamusCSState extends State<EditKamusCS> {
                   contentPadding: EdgeInsets.all(10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.blue, width: 1),
                   ),
                 ),
                 onChanged: (value) {
@@ -78,6 +79,13 @@ class _EditKamusCSState extends State<EditKamusCS> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
                 onPressed: () {},
                 child: Text(
                   'Simpan',
