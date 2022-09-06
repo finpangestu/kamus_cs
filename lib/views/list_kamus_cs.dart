@@ -44,6 +44,11 @@ class _ListKamusCSState extends State<ListKamusCS> {
           Container(
             margin: EdgeInsets.fromLTRB(30, 20, 30, 20),
             child: TextField(
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 16,
+                color: Colors.black,
+              ),
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(0),
                 fillColor: Colors.lightBlue[50],
@@ -60,9 +65,13 @@ class _ListKamusCSState extends State<ListKamusCS> {
                   fontWeight: FontWeight.w500,
                 ),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none),
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none,
+                ),
               ),
+              onChanged: (value) {
+                setState(() {});
+              },
             ),
           ),
           Container(

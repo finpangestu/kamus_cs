@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:kamus_cs/views/edit_kamus_cs.dart';
 
 class ListCard extends StatelessWidget {
   final String title;
@@ -31,7 +32,11 @@ class ListCard extends StatelessWidget {
           SlidableAction(
             // An action can be bigger than the others.
             flex: 1,
-            onPressed: null,
+            onPressed: (context) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return EditKamusCS();
+              }));
+            },
             backgroundColor: Color.fromARGB(254, 54, 153, 255),
             foregroundColor: Colors.white,
             icon: Icons.edit_note,
