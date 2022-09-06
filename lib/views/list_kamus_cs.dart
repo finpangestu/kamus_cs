@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: unnecessary_null_comparison, non_constant_identifier_names, prefer_typing_uninitialized_variables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:kamus_cs/views/widgets/list_kamus_card.dart';
 
 class ListKamusCS extends StatefulWidget {
   const ListKamusCS({Key? key}) : super(key: key);
@@ -17,18 +18,18 @@ class _ListKamusCSState extends State<ListKamusCS> {
         elevation: 0,
         centerTitle: true,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
           ),
         ),
         leading: IconButton(
           iconSize: 25,
-          padding: EdgeInsets.only(left: 20),
-          icon: Icon(Icons.arrow_back_ios),
-          color: Colors.blue,
+          padding: const EdgeInsets.only(left: 20),
+          icon: const Icon(Icons.arrow_back_ios),
+          color: const Color.fromARGB(254, 0, 174, 255),
           onPressed: () {},
         ),
-        title: Text(
+        title: const Text(
           'List Kamus CS',
           style: TextStyle(
             fontFamily: 'Poppins',
@@ -38,21 +39,21 @@ class _ListKamusCSState extends State<ListKamusCS> {
           ),
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(30, 20, 20, 30),
+            margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
             child: TextField(
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(0),
+                contentPadding: const EdgeInsets.all(0),
                 fillColor: Colors.lightBlue[50],
                 filled: true,
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   Icons.search,
                   color: Colors.grey,
                 ),
                 hintText: 'Search',
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 16,
                   color: Colors.grey,
@@ -65,10 +66,10 @@ class _ListKamusCSState extends State<ListKamusCS> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   'Hasil',
                   style: TextStyle(
@@ -82,7 +83,7 @@ class _ListKamusCSState extends State<ListKamusCS> {
                   'Berikut kumpulan CS seperti penolakan yang sering ditemui dan cara menjawabnya',
                   style: TextStyle(
                     fontFamily: 'Poppins',
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Colors.grey,
                     fontWeight: FontWeight.w500,
                   ),
@@ -90,6 +91,11 @@ class _ListKamusCSState extends State<ListKamusCS> {
                 ),
               ],
             ),
+          ),
+          ListCard(
+            title: 'Saya gak mau pake expedisi ###',
+            description:
+                'Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain',
           ),
         ],
       ),
