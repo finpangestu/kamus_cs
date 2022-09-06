@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, non_constant_identifier_names, prefer_typing_uninitialized_variables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:kamus_cs/views/widgets/list_kamus_card.dart';
@@ -18,18 +18,18 @@ class _ListKamusCSState extends State<ListKamusCS> {
         elevation: 0,
         centerTitle: true,
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.white,
           ),
         ),
         leading: IconButton(
           iconSize: 25,
-          padding: const EdgeInsets.only(left: 20),
-          icon: const Icon(Icons.arrow_back_ios),
-          color: const Color.fromARGB(254, 0, 174, 255),
+          padding: EdgeInsets.only(left: 20),
+          icon: Icon(Icons.arrow_back_ios),
+          color: Color.fromARGB(254, 0, 174, 255),
           onPressed: () {},
         ),
-        title: const Text(
+        title: Text(
           'List Kamus CS',
           style: TextStyle(
             fontFamily: 'Poppins',
@@ -42,18 +42,18 @@ class _ListKamusCSState extends State<ListKamusCS> {
       body: ListView(
         children: [
           Container(
-            margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+            margin: EdgeInsets.fromLTRB(30, 20, 30, 20),
             child: TextField(
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.all(0),
+                contentPadding: EdgeInsets.all(0),
                 fillColor: Colors.lightBlue[50],
                 filled: true,
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.search,
                   color: Colors.grey,
                 ),
                 hintText: 'Search',
-                hintStyle: const TextStyle(
+                hintStyle: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 16,
                   color: Colors.grey,
@@ -91,6 +91,21 @@ class _ListKamusCSState extends State<ListKamusCS> {
                 ),
               ],
             ),
+          ),
+          ListCard(
+            title: 'Saya gak mau pake expedisi ###',
+            description:
+                'Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain',
+          ),
+          ListCard(
+            title: 'Saya gak mau pake expedisi ###',
+            description:
+                'Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain',
+          ),
+          ListCard(
+            title: 'Kok cepet banget diskonnya berakhir? gak jadi deh!',
+            description:
+                'Sebenta kakak, memang promonya sudah berakhir minggu kemarin. Namun besok ada promo baru lagi lho. Klo besok sudah launching, bisa saya kontak lagi kak?',
           ),
           ListCard(
             title: 'Saya gak mau pake expedisi ###',
