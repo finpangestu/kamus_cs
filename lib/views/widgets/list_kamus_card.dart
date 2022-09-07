@@ -23,14 +23,12 @@ class ListCard extends StatelessWidget {
         motion: DrawerMotion(),
         children: [
           SlidableAction(
-              // An action can be bigger than the others.
               flex: 1,
               onPressed: null,
               backgroundColor: Color.fromARGB(254, 125, 125, 125),
               foregroundColor: Colors.white,
               icon: Icons.copy),
           SlidableAction(
-            // An action can be bigger than the others.
             flex: 1,
             onPressed: (context) {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -42,7 +40,6 @@ class ListCard extends StatelessWidget {
             icon: Icons.edit_note,
           ),
           SlidableAction(
-            // An action can be bigger than the others.
             flex: 1,
             onPressed: null,
             backgroundColor: Color.fromARGB(254, 37, 211, 102),
