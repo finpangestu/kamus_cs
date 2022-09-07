@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:kamus_cs/views/widgets/hero_dialog_route.dart';
+import 'package:kamus_cs/views/widgets/save_popup.dart';
 
 class EditKamusCS extends StatefulWidget {
   const EditKamusCS({Key? key}) : super(key: key);
@@ -86,7 +88,12 @@ class _EditKamusCSState extends State<EditKamusCS> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(HeroDialogRoute(builder: (context) {
+                    return SavePopup();
+                  }));
+                },
                 child: Text(
                   'Simpan',
                   style: TextStyle(fontFamily: 'Poppins'),
