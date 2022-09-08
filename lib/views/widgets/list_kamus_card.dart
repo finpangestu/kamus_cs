@@ -9,9 +9,9 @@ class ListCard extends StatelessWidget {
   final String description;
 
   ListCard({
-    Key? key,
-    required this.title,
-    required this.description,
+    Key key,
+    @required this.title,
+    @required this.description,
   }) : super(key: key);
 
   @override

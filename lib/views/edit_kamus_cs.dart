@@ -5,13 +5,21 @@ import 'package:kamus_cs/views/widgets/hero_dialog_route.dart';
 import 'package:kamus_cs/views/widgets/save_popup.dart';
 
 class EditKamusCS extends StatefulWidget {
-  const EditKamusCS({Key? key}) : super(key: key);
+  const EditKamusCS({Key key}) : super(key: key);
 
   @override
   State<EditKamusCS> createState() => _EditKamusCSState();
 }
 
 class _EditKamusCSState extends State<EditKamusCS> {
+  // final _formKey = GlobalKey<FormState>();
+  String validator(value) {
+    if (value.isEmpty) {
+      return 'Wajib diisi!';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +66,7 @@ class _EditKamusCSState extends State<EditKamusCS> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
-              child: TextField(
+              child: TextFormField(
                 maxLines: 5,
                 style: TextStyle(
                   fontFamily: 'Poppins',
@@ -73,9 +81,10 @@ class _EditKamusCSState extends State<EditKamusCS> {
                     borderSide: BorderSide(color: Colors.blue, width: 1),
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {});
-                },
+                // onChanged: (value) {
+                //   setState(() {});
+                // },
+                validator: validator,
               ),
             ),
             SizedBox(

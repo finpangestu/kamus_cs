@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class HeroDialogRoute<T> extends PageRoute<T> {
   HeroDialogRoute({
-    required WidgetBuilder builder,
-    RouteSettings? settings,
+    @required WidgetBuilder builder,
+    RouteSettings settings,
     bool fullscreenDialog = false,
   })  : _builder = builder,
         super(settings: settings, fullscreenDialog: fullscreenDialog);
@@ -11,10 +11,10 @@ class HeroDialogRoute<T> extends PageRoute<T> {
   final WidgetBuilder _builder;
 
   @override
-  Color? get barrierColor => Colors.black54;
+  Color get barrierColor => Colors.black54;
 
   @override
-  String? get barrierLabel => 'Popup save open';
+  String get barrierLabel => 'Popup save open';
 
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,

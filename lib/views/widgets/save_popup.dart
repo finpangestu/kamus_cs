@@ -6,7 +6,7 @@ import 'package:kamus_cs/views/list_kamus_cs.dart';
 const String _heroSavePopup = 'save-popup-hero';
 
 class SavePopup extends StatelessWidget {
-  const SavePopup({Key? key}) : super(key: key);
+  const SavePopup({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class SavePopup extends StatelessWidget {
 
 class CustomRectTween extends RectTween {
   CustomRectTween({
-    required Rect? begin,
-    required Rect? end,
+    @required Rect begin,
+    @required Rect end,
   }) : super(begin: begin, end: end);
 }

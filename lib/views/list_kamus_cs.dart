@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kamus_cs/views/widgets/list_kamus_card.dart';
 
 class ListKamusCS extends StatefulWidget {
-  const ListKamusCS({Key? key}) : super(key: key);
+  const ListKamusCS({Key key}) : super(key: key);
 
   @override
   State<ListKamusCS> createState() => _ListKamusCSState();
