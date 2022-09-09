@@ -101,15 +101,24 @@ class _ListKamusCSState extends State<ListKamusCS> {
               ],
             ),
           ),
-
-          //contoh manggil card di list_kamus_card.dart
-          ListCard(question: "question", answer: "answer")
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 1.45,
+            child: ListView.builder(
+              itemCount: listKamus.length,
+              // physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ListCard(
+                    question: listKamus[index]['question'],
+                    answer: listKamus[index]['answer']);
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 
-  final List<Map> usablePacket = [
+  List<Map> listKamus = [
     {
       "question": "Saya gak mau pake expedisi ####",
       "answer":
