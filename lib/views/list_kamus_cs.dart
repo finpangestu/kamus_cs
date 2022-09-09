@@ -1,6 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, library_prefixes, missing_return, missing_required_param
+
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' as rootBundle;
+import 'package:kamus_cs/models/kamus_data.dart';
 import 'package:kamus_cs/views/widgets/list_kamus_card.dart';
 
 class ListKamusCS extends StatefulWidget {
@@ -101,28 +105,40 @@ class _ListKamusCSState extends State<ListKamusCS> {
               ],
             ),
           ),
-          ListCard(
-            title: 'Saya gak mau pake expedisi ###',
-            description:
-                'Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain',
-          ),
-          ListCard(
-            title: 'Saya gak mau pake expedisi ###',
-            description:
-                'Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain',
-          ),
-          ListCard(
-            title: 'Kok cepet banget diskonnya berakhir? gak jadi deh!',
-            description:
-                'Sebenta kakak, memang promonya sudah berakhir minggu kemarin. Namun besok ada promo baru lagi lho. Klo besok sudah launching, bisa saya kontak lagi kak?',
-          ),
-          ListCard(
-            title: 'Saya gak mau pake expedisi ###',
-            description:
-                'Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain',
+          FutureBuilder(
+            future: ReadJsonData(),
+            builder: ((context, data) {
+              if (data.hasError) {
+                return Center(
+                  child: Text('${data.error}'),
+                );
+              } else if (data.hasData) {
+                var items = data.data as List<KamusData>;
+                return ListView.builder(
+                  itemCount: items.length,
+                  itemBuilder: ((context, index) {
+                    return ListCard(
+                        question: items[index].question.toString(),
+                        answer: items[index].answer.toString());
+                  }),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }),
           ),
         ],
       ),
     );
+  }
+
+  Future<List<KamusData>> ReadJsonData() async {
+    final jsondata =
+        await rootBundle.rootBundle.loadString('jsonfile/kamuslist.json');
+    final list = json.decode(jsondata) as List<dynamic>;
+
+    return list.map((e) => KamusData.fromJson(e)).toList();
   }
 }

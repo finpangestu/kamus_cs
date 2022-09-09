@@ -5,13 +5,13 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:kamus_cs/views/edit_kamus_cs.dart';
 
 class ListCard extends StatelessWidget {
-  final String title;
-  final String description;
+  final String question;
+  final String answer;
 
   ListCard({
     Key key,
-    @required this.title,
-    @required this.description,
+    @required this.question,
+    @required this.answer,
   }) : super(key: key);
 
   @override
@@ -58,7 +58,7 @@ class ListCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 10, 20, 10),
               child: Text(
-                title,
+                question,
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 15,
@@ -70,7 +70,7 @@ class ListCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 20, 10),
               child: Text(
-                description,
+                answer,
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 16,
