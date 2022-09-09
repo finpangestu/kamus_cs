@@ -12,13 +12,7 @@ class EditKamusCS extends StatefulWidget {
 }
 
 class _EditKamusCSState extends State<EditKamusCS> {
-  // final _formKey = GlobalKey<FormState>();
-  String validator(value) {
-    if (value.isEmpty) {
-      return 'Wajib diisi!';
-    }
-    return null;
-  }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -50,66 +44,76 @@ class _EditKamusCSState extends State<EditKamusCS> {
           ),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Kamus CS',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 14,
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
-              child: TextFormField(
-                maxLines: 5,
+      body: Form(
+        key: _formKey,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Kamus CS',
                 style: TextStyle(
                   fontFamily: 'Poppins',
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Colors.black,
+                  fontWeight: FontWeight.w600,
                 ),
-                decoration: InputDecoration(
-                  hintText: 'Enter a message... .',
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.blue, width: 1),
-                  ),
-                ),
-                // onChanged: (value) {
-                //   setState(() {});
-                // },
-                validator: validator,
               ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
+                child: TextFormField(
+                  maxLines: 5,
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: 'Enter a message... .',
+                    contentPadding: EdgeInsets.all(10),
+                    border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.blue, width: 1),
                     ),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(HeroDialogRoute(builder: (context) {
-                    return SavePopup();
-                  }));
-                },
-                child: Text(
-                  'Simpan',
-                  style: TextStyle(fontFamily: 'Poppins'),
+                  // onChanged: (value) {
+                  //   setState(() {});
+                  // },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Wajib diisi';
+                    }
+                    return null;
+                  },
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      Navigator.of(context)
+                          .push(HeroDialogRoute(builder: (context) {
+                        return SavePopup();
+                      }));
+                    }
+                  },
+                  child: Text(
+                    'Simpan',
+                    style: TextStyle(fontFamily: 'Poppins'),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
