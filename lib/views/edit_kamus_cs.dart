@@ -63,6 +63,8 @@ class _EditKamusCSState extends State<EditKamusCS> {
               Container(
                 margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
                 child: TextFormField(
+                  initialValue:
+                      "Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain",
                   maxLines: 5,
                   style: TextStyle(
                     fontFamily: 'Poppins',
