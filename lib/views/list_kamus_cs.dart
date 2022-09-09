@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, library_prefixes, missing_return, missing_required_param
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' as rootBundle;
-import 'package:kamus_cs/models/kamus_data.dart';
 import 'package:kamus_cs/views/widgets/list_kamus_card.dart';
 
 class ListKamusCS extends StatefulWidget {
@@ -15,6 +11,59 @@ class ListKamusCS extends StatefulWidget {
 }
 
 class _ListKamusCSState extends State<ListKamusCS> {
+  final List<Map> usablePacket = [
+    {
+      "question": "Saya gak mau pake expedisi ####",
+      "answer":
+          "Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain"
+    },
+    {
+      "question": "Kok cepet banget diskonnya berakhir? gak jadi deh!",
+      "answer":
+          "Sebentar kakak, memang promonya sudah berakhir minggu kemarin. Namun besok ada promo baru lagi lho. Klo besok sudah launching, bisa saya kontak lagi kak?"
+    },
+    {
+      "question": "Yah... kalo yang itu saya sudah punya. Skip deh!",
+      "answer":
+          "Wah alhamdulillah, ternyata kakak sudah punya produk tersebut. Keren kak! Untuk type lain mana yang belum punya kak?"
+    },
+    {
+      "question": "Saya gak mau pake expedisi ####",
+      "answer":
+          "Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain"
+    },
+    {
+      "question": "Kok cepet banget diskonnya berakhir? gak jadi deh!",
+      "answer":
+          "Sebentar kakak, memang promonya sudah berakhir minggu kemarin. Namun besok ada promo baru lagi lho. Klo besok sudah launching, bisa saya kontak lagi kak?"
+    },
+    {
+      "question": "Yah... kalo yang itu saya sudah punya. Skip deh!",
+      "answer":
+          "Wah alhamdulillah, ternyata kakak sudah punya produk tersebut. Keren kak! Untuk type lain mana yang belum punya kak?"
+    },
+    {
+      "question": "Saya gak mau pake expedisi ####",
+      "answer":
+          "Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain"
+    },
+    {
+      "question": "Kok cepet banget diskonnya berakhir? gak jadi deh!",
+      "answer":
+          "Sebentar kakak, memang promonya sudah berakhir minggu kemarin. Namun besok ada promo baru lagi lho. Klo besok sudah launching, bisa saya kontak lagi kak?"
+    },
+    {
+      "question": "Yah... kalo yang itu saya sudah punya. Skip deh!",
+      "answer":
+          "Wah alhamdulillah, ternyata kakak sudah punya produk tersebut. Keren kak! Untuk type lain mana yang belum punya kak?"
+    },
+    {
+      "question": "Saya gak mau pake expedisi ####",
+      "answer":
+          "Baik kak, kalau boleh tahu kenapa ya kak? supaya saya bantu cari ekspedisi lain"
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,40 +154,11 @@ class _ListKamusCSState extends State<ListKamusCS> {
               ],
             ),
           ),
-          FutureBuilder(
-            future: ReadJsonData(),
-            builder: ((context, data) {
-              if (data.hasError) {
-                return Center(
-                  child: Text('${data.error}'),
-                );
-              } else if (data.hasData) {
-                var items = data.data as List<KamusData>;
-                return ListView.builder(
-                  itemCount: items.length,
-                  itemBuilder: ((context, index) {
-                    return ListCard(
-                        question: items[index].question.toString(),
-                        answer: items[index].answer.toString());
-                  }),
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            }),
-          ),
+
+          //contoh manggil card di list_kamus_card.dart
+          ListCard(question: "question", answer: "answer")
         ],
       ),
     );
-  }
-
-  Future<List<KamusData>> ReadJsonData() async {
-    final jsondata =
-        await rootBundle.rootBundle.loadString('jsonfile/kamuslist.json');
-    final list = json.decode(jsondata) as List<dynamic>;
-
-    return list.map((e) => KamusData.fromJson(e)).toList();
   }
 }
